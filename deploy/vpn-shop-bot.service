@@ -1,0 +1,23 @@
+[Unit]
+Description=Persian VPN Shop Telegram Bot
+After=network-online.target mariadb.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=allbatech
+Group=allbatech
+WorkingDirectory=/home/allbatech/Documents/Vpn-Bot
+EnvironmentFile=/home/allbatech/Documents/Vpn-Bot/.env
+ExecStart=/home/allbatech/Documents/Vpn-Bot/.venv/bin/python -m vpnshopbot.app
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/allbatech/Documents/Vpn-Bot
+
+[Install]
+WantedBy=multi-user.target
